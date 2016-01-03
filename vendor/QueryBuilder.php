@@ -43,8 +43,12 @@ class QueryBuilder implements BuildableInterface
 	 *
 	 * @return void
 	*/
-	private function appendToQueryString(string $string)
+	private function appendToQueryString(string $string, $trim_comma = false)
 	{
+		if ($trim_comma === true)
+		{
+			$this->query_string = trim($this->query_string, ",");
+		}
 		if (strlen($string) > 0)
 		{
 			$this->query_string .= " ".$string;
@@ -141,7 +145,7 @@ class QueryBuilder implements BuildableInterface
 
 		$where_option = "WHERE ".$where_option;
 
-		$this->appendToQueryString($where_option);
+		$this->appendToQueryString($where_option, true);
 
 		return new QueryBuilder($this->query_string);
 	}
@@ -204,6 +208,44 @@ class QueryBuilder implements BuildableInterface
 		$values = "VALUES(".rtrim(implode(",", $values_options), ",").")";
 
 		$this->appendToQueryString($values);
+
+		return new QueryBuilder($this->query_string);
+	}
+
+	public function update(string $update_option)
+	{
+		if (empty($update_option))
+		{
+			return;
+		}
+
+		$update_string = "UPDATE TABLE ".$update_option." SET";
+
+		$this->appendToQueryString($update_string);
+
+		return new QueryBuilder($this->query_string);
+	}
+
+	public function set(string $set_option_name, string $set_option_value)
+	{
+		$set_option_value = is_numeric($set_option_value) ? $set_option_value : "'".$set_option_value."'";
+		$set_option = $set_option_name." = ".$set_option_value.",";
+
+		$this->appendToQueryString($set_option);
+
+		return new QueryBuilder($this->query_string);
+	}
+
+	public function delete(string $delete_option)
+	{
+		if (empty($delete_option))
+		{
+			return;
+		}
+
+		$delete_string = "DELETE FROM ".$delete_option;
+
+		$this->appendToQueryString($delete_string);
 
 		return new QueryBuilder($this->query_string);
 	}
