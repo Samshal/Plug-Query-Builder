@@ -150,6 +150,9 @@ class QueryBuilder implements BuildableInterface
 		return new QueryBuilder($this->query_string);
 	}
 
+	/**
+	 * insert() method. Generate an INSERT Fragment
+	 */
 	public function insert()
 	{
 		$insert_option = "INSERT";
@@ -159,6 +162,13 @@ class QueryBuilder implements BuildableInterface
 		return new QueryBuilder($this->query_string);
 	}
 
+	/**
+	 * into(). Generates an INTO Fragment
+	 *
+	 * @param string $into_option The table name to insert into
+	 * @param QueryBuilder|null 
+	 * @return QueryBuilder a new instance of this object
+	 */
 	public function into(string $into_option, $query_builder_columns_object = null)
 	{
 		//was there any parameter?
