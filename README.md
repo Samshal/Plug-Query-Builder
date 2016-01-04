@@ -28,7 +28,8 @@ of a `QueryBuilder()` object
 + delete(string $string)
 
 <i>You should know that:</i>
-	> This class is not an SQL string validator. It does not validate your sql queries.
-	It only appends a string to another based on the method you've called.
-	So if you append a `where()` method directly to a `select()` method, it still
-	generates an sql string.
+
+> This class is not an SQL string validator. It does not validate your sql queries.
+It only appends a string to another based on the method you've called.
+So if you append a `where()` method directly to a `select()` method, it still
+generates an sql string.
