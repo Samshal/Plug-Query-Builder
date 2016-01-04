@@ -11,6 +11,20 @@
 
 namespace Plug\DBAL\QueryBuilder;
 
+/**
+ * A very simple demonstration of this class' usage is illustrated below
+ * @example 
+ *		require "my_autoloader.php"; //require your autoloader or manually invlude every class involved in this project
+ *		
+ *		$queryBuilder = new \Plug\DBAL\QueeryBuilder\QueryBuilder();
+ *		$query_string = $queryBuilder
+ *						->select("first_name", "last_name", "middle_name")
+ *						->from("CustomerInfo")
+ *						->where("customer_id > 300")
+ *						->build();
+ *		echo $query_string //outputs: "SELECT first_name, last_name, midddle_name FROM CustomerInfo WHERE customer_id > 300"
+ */
+
 class QueryBuilder implements BuildableInterface
 {
 	/**
