@@ -13,6 +13,9 @@
 */
 namespace Plug\DBAL\QueryBuilder;
 
+require "../vendor/BuildableInterface.php";
+require "../vendor/QueryBuilder.php";
+
 class QueryBuilderTest extends \PHPUnit_Framework_TestCase
 {
 	public function testSelect()
