@@ -4,6 +4,7 @@ An Intelligent Query Builder for the SQL Language. It generates a complete sql s
 **This SQL Query Builder works through method chaining. You can call subsequent methods on another recursively.**
 
 For example:
+
 	$query = new QueryBuilder()
 			->select("first_name", "last_name")
 			->from("EmployeeInfo")
