@@ -1,4 +1,5 @@
 language: php
+
 php:
-	- 7.0
-script: phpunit --boostrap /vendor tests
+   - 7.0
+script: phpunit --bootstrap vendor tests
