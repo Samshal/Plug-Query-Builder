@@ -27,5 +27,13 @@ class QueryBuilderTest extends \PHPUnit_Framework_TestCase
 		assertEquals($select_all_string, "SELECT *");
 		assertEquals($select_columns_string, "SELECT col1, col2, col3, col4");
 	}
+
+	public function testInsert()
+	{
+		$queryBuilder = new QueryBuilder();
+		$insert_string = $queryBuilder->insert()->build();
+
+		assetEquals($insert_string, "INSERT");
+	}
 }
 ?>
